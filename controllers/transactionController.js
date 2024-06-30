@@ -43,5 +43,18 @@ transactions.get("/:id", (req, res) => {
 
 // Delete
 // endpoint: /transactions/id
+transactions.delete("/:id", (req, res) => {
+  const { id } = req.params;
+  const transactionIndex = getDataIndex(transactionData, id);
+  if (transactionIndex < 0) {
+    res.status(404).json({
+      error: "Transaction Not Found",
+    });
+  } else {
+    const transaction = transactionData[transactionIndex];
+    transactionData.splice(transactionIndex, 1);
+    res.status(200).json(transaction);
+  }
+});
 
 module.exports = transactions;
