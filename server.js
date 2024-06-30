@@ -1,3 +1,5 @@
+// server.js
+
 const app = require("./app.js");
 
 // Loads in environment variables from .env file
