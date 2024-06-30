@@ -63,6 +63,30 @@ transactions.post(
 
 // Update
 // endpoint: /transactions/id
+transactions.put(
+  "/:id",
+  checkForItemNameKey,
+  checkForAmountKey,
+  checkForDateKey,
+  checkForFromKey,
+  checkForCategoryKey,
+  (req, res) => {
+    const { id } = req.params;
+    const transactionIndex = getDataIndex(transactionData, id);
+    if (transactionIndex < 0) {
+      res.status(404).json({
+        error: "Transaction Not Found",
+      });
+    } else {
+      transactionData[transactionIndex].item_name = req.body.item_name;
+      transactionData[transactionIndex].amount = req.body.amount;
+      transactionData[transactionIndex].date = req.body.date;
+      transactionData[transactionIndex].from = req.body.from;
+      transactionData[transactionIndex].category = req.body.category;
+      res.status(202).json(transactionData[transactionIndex]);
+    }
+  }
+);
 
 // Delete
 // endpoint: /transactions/id
