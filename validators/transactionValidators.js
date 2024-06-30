@@ -10,7 +10,7 @@ function checkForItemNameKey(req, res, next) {
   }
 }
 function checkForAmountKey(req, res, next) {
-  if (!res.body.hasOwnProperty("amount")) {
+  if (!req.body.hasOwnProperty("amount")) {
     req.status(400).json({ error: "Transaction must have a amount key" });
   } else if (typeof req.body.amount != "number") {
     res.status(400).json({ error: "amount key must be a number" });
@@ -25,7 +25,7 @@ function checkForAmountKey(req, res, next) {
 function checkForDateKey(req, res, next) {
   const date = new Date(req.body.date);
 
-  if (!res.body.hasOwnProperty("date")) {
+  if (!req.body.hasOwnProperty("date")) {
     req.status(400).json({ error: "Transaction must have a date key" });
   } else if (typeof req.body.date != "string") {
     res.status(400).json({ error: "date key must be a string" });
@@ -36,7 +36,7 @@ function checkForDateKey(req, res, next) {
   }
 }
 function checkForFromKey(req, res, next) {
-  if (!res.body.hasOwnProperty("from")) {
+  if (!req.body.hasOwnProperty("from")) {
     req.status(400).json({ error: "Transaction must have a from key" });
   } else if (typeof req.body.from != "string") {
     res.status(400).json({ error: "from key must be a string" });
@@ -45,7 +45,7 @@ function checkForFromKey(req, res, next) {
   }
 }
 function checkForCategoryKey(req, res, next) {
-  if (!res.body.hasOwnProperty("category")) {
+  if (!req.body.hasOwnProperty("category")) {
     req.status(400).json({ error: "Transaction must have a category key" });
   } else if (typeof req.body.category != "string") {
     res.status(400).json({ error: "category key must be a string" });

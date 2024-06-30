@@ -1,5 +1,6 @@
 // controllers/transactionController.js
 const express = require("express");
+const { nanoid } = require("nanoid");
 const transactionData = require("../models/transaction-data.json"); // App Data
 const { getDataIndex } = require("../helpers/dataHelpers");
 
@@ -37,6 +38,28 @@ transactions.get("/:id", (req, res) => {
 
 // Create
 // endpoint: /transactions
+transactions.post(
+  "/",
+  checkForItemNameKey,
+  checkForAmountKey,
+  checkForDateKey,
+  checkForFromKey,
+  checkForCategoryKey,
+  (req, res) => {
+    const newTransaction = {
+      id: nanoid(10),
+      item_name: req.body.item_name,
+      amount: req.body.amount,
+      date: req.body.date,
+      from: req.body.from,
+      category: req.body.category,
+    };
+    transactionData.push(newTransaction);
+
+    res.status(201).json(transactionData[transactionData.length - 1]);
+    // res.status(201).json(newTransaction);
+  }
+);
 
 // Update
 // endpoint: /transactions/id
