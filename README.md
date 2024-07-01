@@ -16,6 +16,7 @@ This is a back-end application for a simple bugeting app.
 |  4  | Destroy | /transactions/:id |  DELETE   | **D**elete |             Delete a transactions              |
 |  5  | Update  | /transactions/:id |    PUT    | **U**pdate |             Update a transactions              |
 
+> You can try the enpoints [here](https://budgeting-app-back-end-wkhv.onrender.com).
 
 ## Transaction Data
 - `id` : **String** - 10 digint unique 
