@@ -26,7 +26,7 @@ transactions.get("/", (req, res) => {
 transactions.get("/:id", (req, res) => {
   const { id } = req.params;
   const transaction = transactionData.find((item) => item.id == id);
-  console.log(transaction);
+
   if (transaction == undefined) {
     res.status(404).json({
       error: "Transaction Not Found",
