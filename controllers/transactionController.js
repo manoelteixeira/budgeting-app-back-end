@@ -57,7 +57,6 @@ transactions.post(
     transactionData.push(newTransaction);
 
     res.status(201).json(transactionData[transactionData.length - 1]);
-    // res.status(201).json(newTransaction);
   }
 );
 
